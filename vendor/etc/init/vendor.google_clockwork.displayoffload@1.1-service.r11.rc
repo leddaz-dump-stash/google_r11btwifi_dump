@@ -1,0 +1,16 @@
+service vendor.displayoffload-hal-1-1 /vendor/bin/hw/vendor.google_clockwork.displayoffload@1.1-service.r11
+    disabled
+    class hal
+    user system
+    group system
+    file /dev/kmsg w
+
+on property:vendor.wac.state=booting
+    stop vendor.displayoffload-hal-1-1
+
+on property:vendor.wac.state=running
+    start vendor.displayoffload-hal-1-1
+
+on fs
+    chmod 0660 /sys/devices/platform/panel_0/mux_select/value
+    chown system system /sys/devices/platform/panel_0/mux_select/value

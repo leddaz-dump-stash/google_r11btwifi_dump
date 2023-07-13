@@ -1,0 +1,28 @@
+{
+    "Sensors":[
+        {
+            "Name":"PPG_NTC",
+            "Type":"SKIN",
+            "HotThreshold":[
+                "NAN",
+                "NAN",
+                "NAN",
+                "NAN",
+                "NAN",
+                49.0,
+                51.0
+            ],
+            "HotHysteresis":[
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.9,
+                1.9
+            ],
+            "Multiplier":0.001,
+            "Monitor":true
+        }
+    ]
+}

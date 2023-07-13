@@ -1,0 +1,15 @@
+#
+# Copyright 2020 Google LLC. All Rights Reserved.
+#
+# USF init config file.
+#
+
+on init
+    setprop sensors.use_mcu_time false
+    setprop sensors.enable_obd true
+
+on post-fs-data
+    # Create USF registry script save directory.
+    mkdir /data/vendor/sensors 0770 system system
+    mkdir /data/vendor/sensors/registry 0770 system system
+

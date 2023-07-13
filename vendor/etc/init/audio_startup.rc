@@ -1,0 +1,6 @@
+# Audio Setup Address
+service audio_startup /vendor/bin/audio_startup.sh
+    class late_start
+    user system
+    group audio
+    oneshot
