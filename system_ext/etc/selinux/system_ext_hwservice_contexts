@@ -1,0 +1,2 @@
+vendor.google_clockwork.lefty::ILefty                           u:object_r:hal_lefty_hwservice:s0
+vendor.google_clockwork.wristorientation::IWristOrientation     u:object_r:hal_wristorientation_hwservice:s0

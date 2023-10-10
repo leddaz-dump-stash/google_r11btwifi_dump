@@ -1,0 +1,8 @@
+ntc-thermal.ko
+google_battery.ko
+hl6111_charger.ko
+haptics-cs40l2x.ko
+nanohub.ko
+cs35l41-mod.ko
+mcu_mic_codec.ko
+exynos9110_sound_r11.ko
