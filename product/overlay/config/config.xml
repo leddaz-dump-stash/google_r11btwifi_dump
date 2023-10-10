@@ -1,0 +1,22 @@
+<config>
+    <!-- Immutable overlays must precede mutable ones -->
+    <overlay package="com.android.wifi.resources.r11" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.app.overlay.r11.wearmaterial" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.app.overlay.r11.tiles" mutable="false" enabled="true" />
+    <overlay package="com.google.android.apps.wearable.settings.overlay.r11.wearmaterial" mutable="false" enabled="true" />
+    <overlay package="com.google.android.apps.messaging.overlay.r11.wearmaterial" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.setupwizard.overlay.r11.wearmaterial" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.sysui.overlay.r11.experiences.charging" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.sysui.overlay.r11.experiences.globallauncher" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.sysui.overlay.r11.notification" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.sysui.overlay.r11.tiles" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.sysui.overlay.r11.wearmaterial" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.sysui.overlay.r11.all" mutable="false" enabled="true" />
+    <overlay package="com.google.android.permissioncontroller.overlay.r11.wearmaterial" mutable="false" enabled="true" />
+    <overlay package="com.google.android.wearable.watchface.rwf.overlay.r11.wearmaterial" mutable="false" enabled="true" />
+    <overlay package="com.google.android.inputmethod.latin.overlay.r11.wearmaterial" mutable="false" enabled="true" />
+    <overlay package="com.google.android.apps.wearable.systemui.r11.wearmaterial" mutable="false" enabled="true" />
+
+    <!-- Mutable overlays -->
+    <merge path="gm3-overlay-config.xml" />
+</config>
