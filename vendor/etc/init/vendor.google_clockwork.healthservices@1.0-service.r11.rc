@@ -1,0 +1,9 @@
+service vendor.healthservices-hal-1-0 /vendor/bin/hw/vendor.google_clockwork.healthservices@1.0-service.r11
+    disabled
+    class hal
+    user system
+    group system context_hub
+    file /dev/kmsg w
+
+on property:blhost.fw.download.complete=true
+    start vendor.healthservices-hal-1-0
