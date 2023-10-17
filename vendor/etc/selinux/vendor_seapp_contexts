@@ -1,0 +1,24 @@
+user=system seinfo=platform name=com.samsung.slsi.telephony.silentlogging domain=vendor_telephony_app levelFrom=all
+user=system seinfo=platform name=com.samsung.slsi.telephony.silentlogging:remote domain=vendor_telephony_app levelFrom=all
+user=system seinfo=platform name=com.samsung.slsi.telephony.testmode domain=vendor_telephony_app levelFrom=all
+user=system seinfo=platform name=com.samsung.slsi.telephony.uartswitch domain=vendor_telephony_app levelFrom=all
+user=system seinfo=platform name=com.samsung.slsi.sysdebugmode domain=vendor_telephony_app levelFrom=all
+user=system seinfo=platform name=com.samsung.slsi.telephony.networktestmode domain=vendor_telephony_app levelFrom=all
+user=system seinfo=platform name=com.samsung.slsi.engineermode domain=vendor_telephony_app levelFrom=all
+user=_app isPrivApp=true name=com.google.android.grilservice domain=grilservice_app levelFrom=all
+user=_app seinfo=platform name=com.android.pixellogger domain=logger_app type=app_data_file levelFrom=all
+user=system seinfo=platform name=com.google.SSRestartDetector domain=ssr_detector_app type=system_app_data_file levelFrom=user
+user=_app seinfo=platform name=com.android.ramdump domain=ramdump_app type=app_data_file levelFrom=all
+user=radio isPrivApp=true seinfo=platform name=com.google.RilConfigService domain=ril_config_service_app type=app_data_file
+user=_app isPrivApp=true name=com.shannon.imsservice domain=vendor_ims_app levelFrom=all
+user=_app isPrivApp=true name=com.shannon.imsservice:remote domain=vendor_ims_app levelFrom=all
+user=_app isPrivApp=true name=com.shannon.qualifiednetworksservice domain=vendor_ims_app levelFrom=all
+user=_app isPrivApp=true name=com.samsung.slsi.telephony.oemril domain=oemrilservice_app levelFrom=all
+user=_app isPrivApp=true seinfo=platform name=com.google.android.connectivitymonitor domain=con_monitor_app type=app_data_file levelFrom=all
+user=_app isPrivApp=true name=com.google.android.apps.health.wear domain=health_study_app type=privapp_data_file levelFrom=all
+user=_app isPrivApp=true name=com.google.android.apps.internal.wearables.ppgdatacollector domain=data_streamer_app type=privapp_data_file levelFrom=all
+user=_app isPrivApp=true name=com.google.android.apps.internal.wearables.ecgdatacollector domain=ecg_collector_app type=privapp_data_file levelFrom=all
+user=_app isPrivApp=true name=com.google.sensors.r11.algorunner domain=algo_runner_app type=privapp_data_file levelFrom=all
+user=_app isPrivApp=true name=com.google.hardware.techeng.sensors.datacollection.weardcfreeliving domain=wear_dc_app type=privapp_data_file levelFrom=all
+user=_app isPrivApp=true name=com.google.mds domain=modem_diagnostic_app type=privapp_data_file levelFrom=all
+user=system seinfo=platform isPrivApp=true name=com.google.android.wearable.fitbit.mcu.updater domain=mcu_updater_app type=system_app_data_file levelFrom=none level=s0
