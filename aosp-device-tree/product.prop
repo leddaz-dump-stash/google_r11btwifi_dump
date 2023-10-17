@@ -1,0 +1,6 @@
+dalvik.vm.systemservercompilerfilter=speed-profile
+persist.traced.enable=1
+ro.charger.enable_suspend=true
+ro.com.google.ime.system_lm_dir=/product/usr/share/ime/google/wear_lms
+ro.lmk.log_stats=true
+ro.oem.enable_fido_smart_setup=true

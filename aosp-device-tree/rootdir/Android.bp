@@ -1,0 +1,52 @@
+//
+// Copyright (C) 2023 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Init scripts
+sh_binary {
+    name: "audio_startup.sh",
+    src: "bin/audio_startup.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "boot_wakelock.sh",
+    src: "bin/boot_wakelock.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.insmod.sh",
+    src: "bin/init.insmod.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "install-recovery.sh",
+    src: "bin/install-recovery.sh",
+    vendor: true,
+}
+
+// Init configuration files
+prebuilt_etc {
+    name: "init.exynos9110.rc",
+    src: "etc/init.exynos9110.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.r11btwifi.rc",
+    src: "etc/init.r11btwifi.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+// fstab
+prebuilt_etc {
+    name: "fstab.persist",
+    src: "etc/fstab.persist",
+    vendor: true,
+}
