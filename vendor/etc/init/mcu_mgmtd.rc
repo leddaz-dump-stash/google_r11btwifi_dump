@@ -1,0 +1,17 @@
+on post-fs-data
+    restorecon /sys/power/cpupm/sicd
+    restorecon_recursive /sys/devices/virtual/nanohub/nanohub_comms
+    start mcu_mgmtd
+
+# Don't run MCU on Dev2 boards without an MCU
+on post-fs-data && property:ro.boot.cdt_hwid=0x00010101000101050000000000000000
+    stop mcu_mgmtd
+
+service mcu_mgmtd /vendor/bin/mcu_mgmtd
+    user root
+    group system
+    socket mcu_cwy_rpc stream 0660 system system
+    socket mcu_event seqpacket 0660 system system
+
+on property:mcu.system.reboot.request=true
+    setprop sys.powerctl reboot,mcu-boot-failed

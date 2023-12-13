@@ -1,0 +1,10 @@
+service vendor.wristorientation-hal-1-0 /vendor/bin/hw/vendor.google_clockwork.wristorientation@1.0-service.r11
+    class hal
+    user system
+    group system
+
+# Note: this trigger is for debug purposes only
+on property:blhost.fw.download.complete=true
+    start vendor.wristorientation-hal-1-0
+
+

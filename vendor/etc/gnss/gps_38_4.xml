@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<glgps xmlns="http://www.glpals.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.glpals.com/ glconfig.xsd" >
+  <!--HAL Configuration  -->
+  <hal
+    PortName="lhd"
+    CustGpioDelayMs="250"
+    LogEnabled="false"
+    Log="JAVA"
+    LogDirectory="/sdcard/gps/broadcom/logs/"
+    LogDirectoryMaxSizeMb="1000"
+    LogLineThreshold="200000"
+    CtrlPipe="/data/vendor/gps/gpsdsctrl"
+    NvStorageDir="/data/vendor/gps/"
+    NmeaOutName="/data/vendor/gps/nmea_out"
+
+    WakeLock="geo"
+    LPmode="false"
+
+    ReAidingOnHotStart="false"
+
+    acSuplServer="supl.google.com"
+    SuplPort="7275"
+    SuplLogEnable="false"
+    tlsEnable="true"
+
+    SuplSslMethod="SSLv23_NO_TLSv1_2"
+    SuplEnable="true"
+    SuplUseApn="false"
+    SuplUseApnNI="true"
+    SuplUseFwCellInfo="false"
+    SuplDummyCellInfo="true"
+    SuplTlsCertDirPath="/etc/security/cacerts"
+    SuplTlsCertPath="/vendor/etc/gnss/gps.cer"
+    SuplUT1Seconds="20"
+    SuplUT2Seconds="20"
+    SuplUT3Seconds="20"
+    TcpConnectionTimeout="20"
+    SuplLppCapable="true"
+    SuplEcidCapable="true"
+    SuplVersion="2"
+    SuplMinorVersion="0"
+    SuplOtdoaCapable="true"
+    SuplGlonassCapable = "true"
+    SuplGalileoCapable = "true"
+    SuplBdsCapable = "true"
+    SuplMgpsCapable = "true"
+
+    HulaEnable="false"
+    HulaLog="false"
+    HulaDebugLog="false"
+
+    HttpDirectSyncLto="false"
+    HttpSyncLto="true"
+    LtoDir="/data/vendor/gps/"
+    LtoSyncThresholdDays="1"
+    OnDemandTimeCapability="true"
+
+    AssertEnabled="false"
+    SensorsEnable="false"
+
+    GnssYearOfHardware="2020"
+    IgnoreInjectedSystemTime="true"
+
+    SitSetGpsStatus="false"
+    />
+
+  <gll
+    LogPriMask="LOG_INFO"
+    LogFacMask="LOG_NMEA | LOG_GLLIO | LOG_GLLAPI"
+    OnChipLogPriMask="LOG_INFO"
+    OnChipLogFacMask="LOG_NMEA | LOG_GLLIO | LOG_GLLAPI | LOG_INTEGR"
+    OnChipConfigParameters="ref_clk:38400000"
+    FrqPlan="FRQ_PLAN_38_4MHZ_2PPM"
+    MultiCarrRFMode="GL_MULTI_CARR_RF_MODE_L1"
+    MultiCarrLnaMask="L1_EXT_ON"
+    RfType="GL_RF_4776_BRCM"
+
+    WarmStandbyTimeout1Seconds="0"
+    WarmStandbyTimeout2Seconds="0"
+
+    RfPathLossDb_Ap="5.1"
+    RfPathLossDb_Cp="5.1"
+
+    EnableGnssPropagateInStandby="true"
+
+    EnableOnChipStopNotification="0"
+    PowerMode="3"
+
+    PvtBatchingMode="Gps|Gln|Gal|Qzs|Bds"
+
+    OnChipAccMask="50"
+    MinGpsWeekNumber="2216"
+  >
+  </gll>
+
+  <gll_features
+    EnableLowPowerPmm="true"
+    EnableNicAutoSwitch="true"
+    EnableNavic="false"
+  />
+
+  <!-- Run GPS Tracking in host mode. Test will stop after designated ValidFixes is met or DurationSec has passed-->
+  <job Id="Periodic">
+    <task>
+      <req_pos
+        ValidFixes="600"
+        DurationSec="600"
+      />
+    </task>
+  </job>
+
+  <!-- Run GPS Hot Start test in host mode for <Repeat> times with <ValidFixes> fix(es) terminating each run.\n
+       Hot Start TTFF range: 2.7 - 3 seconds -->
+  <job Id="Hot_Starts">
+    <task Repeat="25">
+      <req_pos ValidFix="1"/>
+    </task>
+  </job>
+
+  <!-- Run GPS Warm and Cold Start tests in host mode (Expected TTFF: 30 - 60 seconds) \n
+       IgnoreXXX. Whether chip will ignore designated assist data. -->
+  <job Id="Warm_Starts">
+    <task Repeat="25">
+      <startup IgnoreEph="true"/>
+      <req_pos ValidFix="1"/>
+    </task>
+  </job>
+
+  <job Id="Cold_Starts">
+    <task Repeat="25">
+      <startup
+        IgnoreOsc="false"
+        IgnoreRamAlm="false"
+        IgnorePosition="true"
+        IgnoreEph="true"
+        IgnoreTime="true"
+      />
+      <req_pos ValidFix="1"/>
+    </task>
+  </job>
+
+  <job Id="batching1">
+    <task Id="breadcrumb-1S" repeat="1">
+      <features EnableACSD  ="true" />
+        <req_breadcrumb
+          BreadCrumbPeriodS="1"
+          BreadCrumbWakeUpOnFifoFull="true"
+          BreadCrumbReportAllFixes="true"
+          BreadCrumbFlushOnStop="true"
+        />
+    </task>
+  </job>
+
+  <!-- Periodic position test with the ROM almanac, stored position, and time from RTC ignored. Intended \n
+       for use with simulator. -->
+  <job Id="Simulator_Periodic1">
+    <task Id="cont" Repeat="1">
+        <startup IgnoreRomAlm="true"
+          IgnoreOsc="false"
+          IgnoreRamAlm="false"
+          IgnorePosition="true"
+          IgnoreEph="true"
+          IgnoreTime="true"
+        />
+        <req_pos ValidFixes="400" DurationSec="1200"/>
+    </task>
+  </job>
+
+  <!-- Run Warm and Cold Start tests in host mode with a simulator. Each run requires <ValidFix> sat. locks\n
+       and runs a total of <Repeat> times.-->
+  <job Id="Simulator_Warm_Starts">
+    <task Repeat="25">
+      <startup
+        IgnoreRomAlm="true"
+        IgnoreEph="true"
+      />
+      <req_pos ValidFix="1"/>
+    </task>
+  </job>
+
+  <job Id="Simulator_Cold_Starts">
+    <task Repeat="25">
+      <startup
+        IgnoreRomAlm="true"
+        IgnoreOsc="false"
+        IgnoreRamAlm="false"
+        IgnorePosition="true"
+        IgnoreEph="true"
+        IgnoreTime="true"
+      />
+      <req_pos ValidFix="1"/>
+    </task>
+  </job>
+
+  <!-- we default set SampleSizeBits to 4 and SampleRateMsps to 4, we have 2Mbits of memory for I and Q,\n
+       maximum coh time with this setting is coh_ms_max = 2*10^6 [Mbits] / [ 2(IQ) * 4 [bit/sample] * \n
+       4*10^6 [Msps] ] = 1000/16 = 62.5 ms. In this example the minimum RBW for this configuration is \n
+       1/0.0625s = 16Hz. Lower SampleSizeBits and SampleRateMsps can get lower RBW.-->
+  <job Id="spa">
+    <task id="spa" >
+      <req_freq_scan
+        ResolutionBandwidthHz="100"
+        VideoBandwidthHz="100"
+        SampleSizeBits="4"
+        SampleRateMsps="4"
+        Band="GL_FACT_TEST_BAND_GPS"
+        InitL1OffsetHz="-1000000"
+        EndL1OffsetHz="1000000"
+        SlowPlatform="true"
+      />
+    </task>
+  </job>
+
+  <job id="Factory_GPS_Track_Test">
+    <task id="test" repeat="1">
+      <startup
+        IgnoreOsc="true"
+        IgnoreRomAlm="true"
+        IgnoreRamAlm="true"
+        IgnorePosition="true"
+        IgnoreNav="true"
+        IgnoreTime="true"
+      />
+      <req_ftest
+        PRN="1"
+        FactoryTestItems="GL_FACT_TEST_WER"
+        FactoryTestMode="GL_FACT_TEST_CONT"
+        AveragingIntervalSec="10"
+        DurationSec="120"
+      />
+    </task>
+  </job>
+
+  <job id="Factory_GNSS_Track_Test">
+    <task id="test" repeat="1">
+      <startup
+        IgnoreOsc="true"
+        IgnoreRomAlm="true"
+        IgnoreRamAlm="true"
+        IgnorePosition="true"
+        IgnoreNav="true"
+        IgnoreTime="true"
+      />
+      <req_ftest
+        PRN="1"
+        FCN="0"
+        BDSPRN="11"
+        GalPrn="1"
+        FactoryTestItems="GL_FACT_TEST_WER"
+        FactoryTestMode="GL_FACT_TEST_CONT"
+        AveragingIntervalSec="10"
+        DurationSec="120"
+      />
+    </task>
+  </job>
+
+  <job id="Factory_GPS_CW_Test">
+    <task id="test" repeat="1">
+      <startup
+        IgnoreOsc="true"
+        IgnoreRomAlm="true"
+        IgnoreRamAlm="true"
+        IgnorePosition="true"
+        IgnoreNav="true"
+        IgnoreTime="true"
+      />
+      <req_ftest
+        PRN="1"
+        FactoryTestItems="GL_FACT_TEST_CW"
+        FactoryTestMode="GL_FACT_TEST_ONCE"
+        Disable200KhzCw="true"
+        AveragingIntervalSec="1"
+        DurationSec="10"
+      />
+    </task>
+  </job>
+
+  <job id="Factory_GLONASS_CW_Test">
+    <task id="test" repeat="1">
+      <startup
+        IgnoreOsc="true"
+        IgnoreRomAlm="true"
+        IgnoreRamAlm="true"
+        IgnorePosition="true"
+        IgnoreNav="true"
+        IgnoreTime="true"
+      />
+      <req_ftest
+        FCN="0"
+        FactoryTestItems="GL_FACT_TEST_CW"
+        FactoryTestMode="GL_FACT_TEST_ONCE"
+        Disable200KhzCw="true"
+        AveragingIntervalSec="1"
+        DurationSec="10"
+      />
+    </task>
+  </job>
+
+  <job id="Factory_BEIDOU_CW_Test">
+    <task id="test" repeat="1">
+      <startup
+        IgnoreOsc="true"
+        IgnoreRomAlm="true"
+        IgnoreRamAlm="true"
+        IgnorePosition="true"
+        IgnoreNav="true"
+        IgnoreTime="true"
+      />
+      <req_ftest
+        BDSPRN="11"
+        FactoryTestItems="GL_FACT_TEST_CW"
+        FactoryTestMode="GL_FACT_TEST_ONCE"
+        Disable200KhzCw="true"
+        AveragingIntervalSec="1"
+        DurationSec="10"
+      />
+    </task>
+  </job>
+
+  <job id="Factory_Combo_CW_Test">
+    <task id="test" repeat="1">
+     <startup
+        IgnoreOsc="true"
+        IgnoreRomAlm="true"
+        IgnoreRamAlm="true"
+        IgnorePosition="true"
+        IgnoreNav="true"
+        IgnoreTime="true"
+      />
+      <req_ftest
+        PRN="1"
+        FCN="0"
+        BDSPRN="11"
+        FactoryTestItems="GL_FACT_TEST_CW"
+        FactoryTestMode="GL_FACT_TEST_ONCE"
+        Disable200KhzCw="true"
+        AveragingIntervalSec="1"
+        DurationSec="10"
+      />
+    </task>
+  </job>
+
+</glgps>
