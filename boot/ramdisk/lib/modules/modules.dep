@@ -1,0 +1,8 @@
+/lib/modules/hl6111_charger.ko:
+/lib/modules/cs35l41-mod.ko:
+/lib/modules/nanohub.ko:
+/lib/modules/ntc-thermal.ko:
+/lib/modules/mcu_mic_codec.ko: /lib/modules/nanohub.ko
+/lib/modules/exynos9110_sound_r11.ko:
+/lib/modules/haptics-cs40l2x.ko:
+/lib/modules/google_battery.ko:
