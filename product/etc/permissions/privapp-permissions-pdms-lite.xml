@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<permissions>
+  <privapp-permissions package="com.google.android.wearable.pixel.pdms">
+    <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    <permission name="android.permission.MANAGE_NOTIFICATIONS"/>
+  </privapp-permissions>
+</permissions>
