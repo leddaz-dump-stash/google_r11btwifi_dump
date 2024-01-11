@@ -1,0 +1,20 @@
+/vendor/lib/modules/bcm477xx.ko:
+/vendor/lib/modules/hl6111_charger.ko:
+/vendor/lib/modules/cs35l41-mod.ko:
+/vendor/lib/modules/ots-pat9126.ko:
+/vendor/lib/modules/touch_nt38350.ko:
+/vendor/lib/modules/rtc-s3c-alt.ko:
+/vendor/lib/modules/nitrous.ko:
+/vendor/lib/modules/st21nfc.ko:
+/vendor/lib/modules/nanohub.ko:
+/vendor/lib/modules/ntc-thermal.ko:
+/vendor/lib/modules/kheaders.ko:
+/vendor/lib/modules/mcu_mic_codec.ko: /vendor/lib/modules/nanohub.ko
+/vendor/lib/modules/cfg80211.ko:
+/vendor/lib/modules/exynos9110_sound_r11.ko:
+/vendor/lib/modules/incrementalfs.ko:
+/vendor/lib/modules/haptics-cs40l2x.ko:
+/vendor/lib/modules/google_battery.ko:
+/vendor/lib/modules/st54j_se.ko:
+/vendor/lib/modules/bcmdhd.ko: /vendor/lib/modules/cfg80211.ko
+/vendor/lib/modules/rtc-s3c.ko:
