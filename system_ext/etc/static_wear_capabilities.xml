@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wear_capabilities>
+	<package name="com.google.android.apps.wearable.systemui">
+	</package>
+	<package name="com.google.euiccpixel">
+	</package>
+	<package name="com.google.android.gsf">
+	</package>
+	<package name="com.google.android.pixelnfc">
+	</package>
+</wear_capabilities>

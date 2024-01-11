@@ -1,0 +1,14 @@
+# r11btwifi-user 13 TWD9.240105.004.A1 11195721 release-keys
+- manufacturer: google
+- platform: exynos5
+- codename: r11btwifi
+- flavor: r11btwifi-user
+- release: 13
+- id: TWD9.240105.004.A1
+- incremental: 11195721
+- tags: release-keys
+- fingerprint: google/r11btwifi/r11btwifi:13/TWD9.240105.004.A1/11195721:user/release-keys
+- is_ab: false
+- brand: google
+- branch: r11btwifi-user-13-TWD9.240105.004.A1-11195721-release-keys
+- repo: google_r11btwifi_dump
