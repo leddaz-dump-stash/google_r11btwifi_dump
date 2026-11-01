@@ -1,0 +1,13 @@
+on init
+    write /sys/power/wake_lock "stay_awake"
+
+on property:sys.boot_completed=1
+    start boot_wakelock
+
+# Boot wakelock timed release
+service boot_wakelock /vendor/bin/boot_wakelock.sh
+    class main
+    user root
+    group wakelock
+    disabled
+    oneshot

@@ -1,0 +1,4 @@
+service vendor.lights.r11 /vendor/bin/hw/android.hardware.lights-service.r11
+    class hal
+    user system
+    group system

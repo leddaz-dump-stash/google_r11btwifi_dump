@@ -1,0 +1,16 @@
+# Android fstab file.
+
+#<src>                                                <mnt_point>  <type>  <mnt_flags and options>                                                               <fs_mgr_flags>
+system							 /system		ext4		    ro						wait,logical,first_stage_mount,avb=vbmeta_system
+vendor							 /vendor		ext4		    ro						wait,logical,first_stage_mount,avb=vbmeta
+system_ext						 /system_ext	ext4		    ro						wait,logical,avb=vbmeta_system
+product							 /product		ext4		    ro						wait,logical,avb=vbmeta_system
+
+/dev/block/platform/13500000.dwmmc0/by-name/metadata  /metadata    ext4    noatime,nosuid,nodev,data=journal,commit=1                                            wait,check,formattable,first_stage_mount,metadata_csum
+/dev/block/platform/13500000.dwmmc0/by-name/userdata  /data        f2fs    noatime,nosuid,nodev,discard                                                          latemount,wait,check,quota,formattable,fileencryption=aes-256-xts:aes-256-cts,keydirectory=/metadata/vold/metadata_encryption,reservedsize=128M
+/dev/block/platform/13500000.dwmmc0/by-name/efs   /mnt/vendor/efs      ext4    defaults,noatime,rw                                                               wait,check,formattable
+/dev/block/platform/13500000.dwmmc0/by-name/efs_backup   /mnt/vendor/efs_backup        ext4    defaults,noatime,rw                                               wait,check,formattable
+/dev/block/platform/13500000.dwmmc0/by-name/modem_userdata   /mnt/vendor/modem_userdata    ext4    defaults,noatime,rw                                           wait,check,formattable
+/dev/block/platform/13500000.dwmmc0/by-name/misc       /misc           emmc    defaults                defaults
+/dev/block/platform/13500000.dwmmc0/by-name/cache  /cache  ext4      noatime,nosuid,nodev,noauto_da_alloc,discard     wait,check,formattable
+/dev/block/zram0                                      none         swap    defaults                                                                              zramsize=50%,max_comp_streams=2

@@ -1,0 +1,5 @@
+# GPS HAL
+service gnss_service /vendor/bin/hw/android.hardware.gnss@2.1-service.brcm
+    class hal
+    user gps
+    group system gps radio

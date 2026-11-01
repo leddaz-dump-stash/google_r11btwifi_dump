@@ -1,0 +1,17 @@
+import /vendor/etc/init/hw/init.exynos9110.rc
+
+# BLK-L (Obsidian)
+on property:ro.boot.hardware.strap_color=BLK
+    setprop ro.oem.fastpair_id 6ED784
+
+# PAPER (Chalk)
+on property:ro.boot.hardware.strap_color=SLV
+    setprop ro.oem.fastpair_id D48C2E
+
+# HAZE (Hazel)
+on property:ro.boot.hardware.strap_color=HAZ
+    setprop ro.oem.fastpair_id 4D1789
+
+# GRAY (Charcoal)
+on property:ro.boot.hardware.strap_color=GRY
+    setprop ro.oem.fastpair_id BAA5F2

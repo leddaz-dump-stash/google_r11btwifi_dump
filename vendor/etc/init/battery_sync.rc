@@ -1,0 +1,6 @@
+service battery_sync /vendor/bin/battery_sync
+    class hal
+    seclabel u:r:battery_sync:s0
+    user system
+    group system
+    file /dev/kmsg w
