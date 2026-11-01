@@ -1,0 +1,14 @@
+# r11btwifi-user 15 BW1A.251005.003.W1 14124465 release-keys
+- manufacturer: google
+- platform: exynos5
+- codename: r11btwifi
+- flavor: r11btwifi-user
+- release: 15
+- id: BW1A.251005.003.W1
+- incremental: 14124465
+- tags: release-keys
+- fingerprint: google/r11btwifi/r11btwifi:15/BW1A.251005.003.W1/14124465:user/release-keys
+- is_ab: false
+- brand: google
+- branch: r11btwifi-user-15-BW1A.251005.003.W1-14124465-release-keys
+- repo: google_r11btwifi_dump

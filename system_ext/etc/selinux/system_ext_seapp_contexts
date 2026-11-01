@@ -1,0 +1,5 @@
+user=_app seinfo=platform name=com.google.android.apps.wearable.poweranomalyservice domain=wear_pas type=app_data_file levelFrom=all
+user=_app seinfo=platform name=com.google.android.pixelsystemservice domain=pixelsystemservice_app type=app_data_file levelFrom=all
+user=_app seinfo=platform name=com.google.android.pixelsystemservice:ephemeral domain=pixelsystemservice_app type=app_data_file levelFrom=all
+user=_app isPrivApp=true name=com.google.android.apps.pixel.dcservice domain=dcservice_app type=privapp_data_file levelFrom=user
+user=_app isPrivApp=true name=com.google.android.apps.pixel.dcservice.ui domain=dcservice_app type=privapp_data_file levelFrom=user

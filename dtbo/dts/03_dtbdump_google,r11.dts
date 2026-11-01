@@ -1,0 +1,354 @@
+/dts-v1/;
+
+/ {
+	compatible = "google,r11";
+	board_id = <0x10103>;
+	board_rev = <0x10100>;
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			battery,wlc_tz_name = "PPG_NTC";
+			battery,wlc_cdev_name = "wlc_cool_dev";
+			battery,charge_reset_soc = <0x50>;
+		};
+	};
+
+	fragment@1 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			#cooling-cells = <0x02>;
+		};
+	};
+
+	fragment@2 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			#cooling-cells = <0x02>;
+		};
+	};
+
+	fragment@3 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			io-channels = <0xffffffff 0x00 0xffffffff 0x01 0xffffffff 0x05 0xffffffff 0x04 0xffffffff 0x06>;
+			io-channel-names = "soc-ntc", "batt-ntc", "lte-ntc", "audio-ntc", "ppg-ntc";
+			pinctrl-names = "default";
+			pinctrl-0 = <0x01>;
+		};
+	};
+
+	fragment@4 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+
+			adc-en {
+				samsung,pins = "gpg2-0";
+				samsung,pin-function = <0x01>;
+				samsung,pin-pud = <0x00>;
+				samsung,pin-con-pdn = <0x03>;
+				samsung,pin-pud-pdn = <0x00>;
+				samsung,pin-drv = <0x01>;
+				phandle = <0x01>;
+			};
+		};
+	};
+
+	fragment@5 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			governor = "fair_share";
+
+			trips {
+
+				batt-throttle-low {
+					temperature = <0xa7f8>;
+					hysteresis = <0x7d0>;
+					type = "passive";
+					phandle = <0x02>;
+				};
+
+				batt-throttle-high {
+					temperature = <0xb3b0>;
+					hysteresis = <0x7d0>;
+					type = "passive";
+					phandle = <0x04>;
+				};
+
+				battery-shutdown {
+					temperature = <0xee48>;
+					hysteresis = <0x3e8>;
+					type = "critical";
+					phandle = <0x05>;
+				};
+			};
+
+			cooling-maps {
+
+				battery-charge-throttled {
+					trip = <0x02>;
+					cooling-device = <0xffffffff 0xffffffff 0xffffffff>;
+				};
+			};
+		};
+	};
+
+	fragment@6 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			polling-delay = <0x3a98>;
+			polling-delay-passive = <0x00>;
+			thermal-sensors = <0xffffffff 0x02>;
+		};
+	};
+
+	fragment@7 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			polling-delay = <0x3a98>;
+			polling-delay-passive = <0x00>;
+			thermal-sensors = <0xffffffff 0x03>;
+		};
+	};
+
+	fragment@8 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			polling-delay = <0x2710>;
+			polling-delay-passive = <0x00>;
+			thermal-sensors = <0xffffffff 0x04>;
+			governor = "fair_share";
+
+			trips {
+
+				wlc-throttle-low {
+					temperature = <0xbf68>;
+					hysteresis = <0x7d0>;
+					type = "passive";
+					phandle = <0x03>;
+				};
+
+				wlc-throttle-high {
+					temperature = <0xbf68>;
+					hysteresis = <0x7d0>;
+					type = "passive";
+					phandle = <0x06>;
+				};
+
+				skin-backup-shutdown {
+					temperature = <0xd2f0>;
+					hysteresis = <0x3e8>;
+					type = "critical";
+					phandle = <0x07>;
+				};
+			};
+
+			cooling-maps {
+
+				wireless-charge-throttled {
+					trip = <0x03>;
+					cooling-device = <0xffffffff 0xffffffff 0xffffffff>;
+				};
+			};
+		};
+	};
+
+	fragment@9 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			clock-names = "xclkout";
+			clocks = <0xffffffff 0x1a0>;
+
+			uaif0 {
+
+				codec {
+					sound-dai = <0xffffffff>;
+				};
+			};
+
+			uaif1 {
+
+				codec {
+					sound-dai = <0xffffffff>;
+				};
+			};
+		};
+	};
+
+	fragment@10 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			samsung,abox-sram-name = "calliope_sram.bin";
+			samsung,abox-dram-name = "calliope_dram.bin";
+		};
+	};
+
+	fragment@11 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			sample_rate_hz = <0xbb80>;
+		};
+	};
+
+	fragment@common {
+		target-path = "/";
+
+		__overlay__ {
+			model = "Google R11 Evt1.1";
+		};
+	};
+
+	fragment@12 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			ddi_id = <0x01>;
+			lcd_info = <0xffffffff>;
+		};
+	};
+
+	fragment@13 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "ok";
+		};
+	};
+
+	fragment@14 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "ok";
+		};
+	};
+
+	fragment@15 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "ok";
+			halo,auth-gpio = <0xffffffff 0x00 0x00>;
+		};
+	};
+
+	fragment@16 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "ok";
+		};
+	};
+
+	fragment@17 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "ok";
+		};
+	};
+
+	fragment@18 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "ok";
+		};
+	};
+
+	fragment@19 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			regulator-always-on;
+			regulator-min-microvolt = <0x2ab980>;
+			regulator-max-microvolt = <0x2ab980>;
+		};
+	};
+
+	__symbols__ {
+		adc_en = "/fragment@4/__overlay__/adc-en";
+		batt_throttle_low = "/fragment@5/__overlay__/trips/batt-throttle-low";
+		batt_throttle_high = "/fragment@5/__overlay__/trips/batt-throttle-high";
+		battery_shutdown = "/fragment@5/__overlay__/trips/battery-shutdown";
+		wlc_throttle_low = "/fragment@8/__overlay__/trips/wlc-throttle-low";
+		wlc_throttle_high = "/fragment@8/__overlay__/trips/wlc-throttle-high";
+		skin_backup_shutdown = "/fragment@8/__overlay__/trips/skin-backup-shutdown";
+	};
+
+	__fixups__ {
+		google_battery = "/fragment@0:target:0";
+		wlc_cool_dev = "/fragment@1:target:0", "/fragment@8/__overlay__/cooling-maps/wireless-charge-throttled:cooling-device:0";
+		batt_cool_dev = "/fragment@2:target:0", "/fragment@5/__overlay__/cooling-maps/battery-charge-throttled:cooling-device:0";
+		tsmab104_ntc = "/fragment@3:target:0", "/fragment@6/__overlay__:thermal-sensors:0", "/fragment@7/__overlay__:thermal-sensors:0", "/fragment@8/__overlay__:thermal-sensors:0";
+		exynos_adc = "/fragment@3/__overlay__:io-channels:0", "/fragment@3/__overlay__:io-channels:8", "/fragment@3/__overlay__:io-channels:16", "/fragment@3/__overlay__:io-channels:24", "/fragment@3/__overlay__:io-channels:32";
+		pinctrl_5 = "/fragment@4:target:0";
+		batt_ntc = "/fragment@5:target:0";
+		lte_pa_ntc = "/fragment@6:target:0";
+		audio_ntc = "/fragment@7:target:0";
+		ppg_ntc = "/fragment@8:target:0";
+		sound = "/fragment@9:target:0";
+		clock = "/fragment@9/__overlay__:clocks:0";
+		cs35l41 = "/fragment@9/__overlay__/uaif0/codec:sound-dai:0", "/fragment@11:target:0";
+		mcu_mic_codec = "/fragment@9/__overlay__/uaif1/codec:sound-dai:0";
+		abox = "/fragment@10:target:0";
+		panel_0 = "/fragment@12:target:0";
+		wf012fbm = "/fragment@12/__overlay__:lcd_info:0";
+		pat9126 = "/fragment@13:target:0";
+		proto1_cs40l25 = "/fragment@14:target:0";
+		evt1_hl6111 = "/fragment@15:target:0";
+		gpm21 = "/fragment@15/__overlay__:halo,auth-gpio:0";
+		novatek = "/fragment@16:target:0";
+		sensorhub_spi4 = "/fragment@17:target:0";
+		ese_spi0 = "/fragment@18:target:0";
+		ldo16_reg = "/fragment@19:target:0";
+	};
+
+	__local_fixups__ {
+
+		fragment@3 {
+
+			__overlay__ {
+				pinctrl-0 = <0x00>;
+			};
+		};
+
+		fragment@5 {
+
+			__overlay__ {
+
+				cooling-maps {
+
+					battery-charge-throttled {
+						trip = <0x00>;
+					};
+				};
+			};
+		};
+
+		fragment@8 {
+
+			__overlay__ {
+
+				cooling-maps {
+
+					wireless-charge-throttled {
+						trip = <0x00>;
+					};
+				};
+			};
+		};
+	};
+};
