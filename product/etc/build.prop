@@ -1,0 +1,39 @@
+####################################
+# from generate_common_build_props
+# These properties identify this partition image.
+####################################
+ro.product.product.brand=google
+ro.product.product.device=r11btwifi
+ro.product.product.manufacturer=Google
+ro.product.product.model=Google Pixel Watch
+ro.product.product.name=r11btwifi
+ro.product.build.date=Thu Sep 18 11:14:56 UTC 2025
+ro.product.build.date.utc=1758194096
+ro.product.build.fingerprint=google/r11btwifi/r11btwifi:15/BW1A.251005.003.W1/14124465:user/release-keys
+ro.product.build.id=BW1A.251005.003.W1
+ro.product.build.tags=release-keys
+ro.product.build.type=user
+ro.product.build.version.incremental=14124465
+ro.product.build.version.release=15
+ro.product.build.version.release_or_codename=15
+ro.product.build.version.sdk=35
+ro.product.build.version.sdk_minor=0
+####################################
+# from variable ADDITIONAL_PRODUCT_PROPERTIES
+####################################
+ro.product.build.16k_page.enabled=false
+ro.product.page_size=4096
+ro.build.characteristics=nosdcard,watch
+ro.product.cpu.pagesize.max=4096
+# Value overridden by post_process_props.py. Original value: default
+ro.dalvik.vm.enable_uffd_gc=false
+####################################
+# from variable PRODUCT_PRODUCT_PROPERTIES
+####################################
+ro.charger.enable_suspend=true
+persist.traced.enable=1
+ro.com.google.ime.system_lm_dir=/product/usr/share/ime/google/wear_lms
+ro.oem.enable_fido_smart_setup=true
+ro.lmk.log_stats=true
+# end of file
+
